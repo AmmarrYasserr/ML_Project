@@ -27,7 +27,6 @@ class _MLprojectv2State extends State<MLprojectv2> {
   String? paymentMethod;
   TextEditingController monthlyCharges = TextEditingController();
   TextEditingController totalCharges = TextEditingController();
-  String? churn;
 
   @override
   Widget build(BuildContext context) {

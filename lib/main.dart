@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ml_project/Project.dart';
+import 'package:ml_project/project.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 class MyApp extends StatefulWidget{
   const MyApp({super.key});
