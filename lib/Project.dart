@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 class MLprojectv2 extends StatefulWidget {
   const MLprojectv2({super.key});
-
   @override
   State<MLprojectv2> createState() => _MLprojectv2State();
 }
@@ -26,11 +25,6 @@ class _MLprojectv2State extends State<MLprojectv2> {
   String? paymentMethod;
   TextEditingController monthlyCharges = TextEditingController();
   TextEditingController totalCharges = TextEditingController();
-<<<<<<< HEAD
-
-=======
->>>>>>> 63488714f4fa81e86a1e9618b5654d2d7627a7c7
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,38 +148,33 @@ class _MLprojectv2State extends State<MLprojectv2> {
             const SizedBox(
               height: 20,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Tenure",
-                    style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  controller: tenure,
-                  cursorColor: Colors.black,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.black12,
-                    contentPadding: EdgeInsets.only(
-                        left: 8, bottom: 0, top: 0, right: 15),
-                    hintText:
-                        "Number of months at the company.",
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                    ),
+            const Text("Tenure",
+                style: TextStyle(
+                    fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.number,
+              controller: tenure,
+              cursorColor: Colors.black,
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.black12,
+                contentPadding: EdgeInsets.only(
+                    left: 8, bottom: 0, top: 0, right: 15),
+                hintText:
+                    "Number of months at the company.",
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8.0),
                   ),
                 ),
-              ],
+              ),
             ),
             const SizedBox(
               height: 30,
@@ -632,95 +621,65 @@ class _MLprojectv2State extends State<MLprojectv2> {
             const SizedBox(
               height: 20,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Monthly Charges",
-                    style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.number,
-                  controller: monthlyCharges,
-                  cursorColor: Colors.black,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.black12,
-                    contentPadding: EdgeInsets.only(
-                        left: 8, bottom: 0, top: 0, right: 15),
-                    hintText: "The amount charged to the customer monthly",
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                    ),
-<<<<<<< HEAD
+            const Text("Monthly Charges",
+                style: TextStyle(
+                    fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.number,
+              controller: monthlyCharges,
+              cursorColor: Colors.black,
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.black12,
+                contentPadding: EdgeInsets.only(
+                    left: 8, bottom: 0, top: 0, right: 15),
+                hintText: "The amount charged to the customer monthly.",
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8.0),
                   ),
                 ),
-              ],
+              ),
             ),
             const SizedBox(
               height: 30,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Total Charges",
-                    style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold)),
-                const SizedBox(
-                  height: 10,
-                ),
-                TextField(
-                  keyboardType: TextInputType.number,
-                  controller: totalCharges,
-                  cursorColor: Colors.black,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.black12,
-                    contentPadding: EdgeInsets.only(
-                        left: 8, bottom: 0, top: 0, right: 15),
-                    hintText: "The total amount charged to the customer",
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 0,
-                        style: BorderStyle.none,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-=======
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Center(
-                  child: MaterialButton(
-                    minWidth: 200,
-                    height: 40,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    color: Colors.orangeAccent,
-                    onPressed: () {},
-                    child: const Text(
-                      "Submit",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
->>>>>>> 63488714f4fa81e86a1e9618b5654d2d7627a7c7
-                    ),
+            const Text("Total Charges",
+                style: TextStyle(
+                    fontSize: 18, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 10,
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              controller: totalCharges,
+              cursorColor: Colors.black,
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Colors.black12,
+                contentPadding: EdgeInsets.only(
+                    left: 8, bottom: 0, top: 0, right: 15),
+                hintText: "The total amount charged to the customer.",
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
                   ),
-                ),
-              ],
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8.0),
+                  ),
+                )
+              )
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             Center(
               child: MaterialButton(
