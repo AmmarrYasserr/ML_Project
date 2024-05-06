@@ -703,33 +703,6 @@ class _MLprojectv2State extends State<MLprojectv2> {
                 const SizedBox(
                   height: 30,
                 ),
-                const Text(
-                  'Churn',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                RadioListTile(
-                    activeColor: Colors.orangeAccent,
-                    title: const Text('Yes'),
-                    value: 'Yes',
-                    groupValue: churn,
-                    onChanged: (val) {
-                      setState(() {
-                        churn = val;
-                      });
-                    }),
-                RadioListTile(
-                    activeColor: Colors.orangeAccent,
-                    title: const Text('No'),
-                    value: 'No',
-                    groupValue: churn,
-                    onChanged: (val) {
-                      setState(() {
-                        churn = val;
-                      });
-                    }),
-                const SizedBox(
-                  height: 20,
-                ),
                 Center(
                   child: MaterialButton(
                     minWidth: 200,
