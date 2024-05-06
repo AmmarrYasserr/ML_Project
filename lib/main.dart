@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ml_project/Project.dart';
+import 'package:ml_project/project.dart';
 
 void main() {
   runApp(const MyApp());

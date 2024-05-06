@@ -26,7 +26,10 @@ class _MLprojectv2State extends State<MLprojectv2> {
   String? paymentMethod;
   TextEditingController monthlyCharges = TextEditingController();
   TextEditingController totalCharges = TextEditingController();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 63488714f4fa81e86a1e9618b5654d2d7627a7c7
 
   @override
   Widget build(BuildContext context) {
@@ -657,6 +660,7 @@ class _MLprojectv2State extends State<MLprojectv2> {
                         Radius.circular(8.0),
                       ),
                     ),
+<<<<<<< HEAD
                   ),
                 ),
               ],
@@ -691,6 +695,25 @@ class _MLprojectv2State extends State<MLprojectv2> {
                       borderRadius: BorderRadius.all(
                         Radius.circular(8.0),
                       ),
+=======
+                  ],
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: MaterialButton(
+                    minWidth: 200,
+                    height: 40,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    color: Colors.orangeAccent,
+                    onPressed: () {},
+                    child: const Text(
+                      "Submit",
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+>>>>>>> 63488714f4fa81e86a1e9618b5654d2d7627a7c7
                     ),
                   ),
                 ),
