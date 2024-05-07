@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class MLprojectv2 extends StatefulWidget {
   const MLprojectv2({super.key});
   @override
@@ -149,8 +150,7 @@ class _MLprojectv2State extends State<MLprojectv2> {
               height: 20,
             ),
             const Text("Tenure",
-                style: TextStyle(
-                    fontSize: 18, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 10,
             ),
@@ -161,10 +161,9 @@ class _MLprojectv2State extends State<MLprojectv2> {
               decoration: const InputDecoration(
                 filled: true,
                 fillColor: Colors.black12,
-                contentPadding: EdgeInsets.only(
-                    left: 8, bottom: 0, top: 0, right: 15),
-                hintText:
-                    "Number of months at the company.",
+                contentPadding:
+                    EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
+                hintText: "Number of months at the company.",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 0,
@@ -622,8 +621,7 @@ class _MLprojectv2State extends State<MLprojectv2> {
               height: 20,
             ),
             const Text("Monthly Charges",
-                style: TextStyle(
-                    fontSize: 18, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 10,
             ),
@@ -634,8 +632,8 @@ class _MLprojectv2State extends State<MLprojectv2> {
               decoration: const InputDecoration(
                 filled: true,
                 fillColor: Colors.black12,
-                contentPadding: EdgeInsets.only(
-                    left: 8, bottom: 0, top: 0, right: 15),
+                contentPadding:
+                    EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
                 hintText: "The amount charged to the customer monthly.",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -652,102 +650,124 @@ class _MLprojectv2State extends State<MLprojectv2> {
               height: 30,
             ),
             const Text("Total Charges",
-                style: TextStyle(
-                    fontSize: 18, fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 10,
             ),
             TextField(
-              keyboardType: TextInputType.number,
-              controller: totalCharges,
-              cursorColor: Colors.black,
-              decoration: const InputDecoration(
-                filled: true,
-                fillColor: Colors.black12,
-                contentPadding: EdgeInsets.only(
-                    left: 8, bottom: 0, top: 0, right: 15),
-                hintText: "The total amount charged to the customer.",
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8.0),
-                  ),
-                )
-              )
-            ),
+                keyboardType: TextInputType.number,
+                controller: totalCharges,
+                cursorColor: Colors.black,
+                decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.black12,
+                    contentPadding:
+                        EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
+                    hintText: "The total amount charged to the customer.",
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 0,
+                        style: BorderStyle.none,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ))),
             const SizedBox(
               height: 30,
             ),
-            Center(
-              child: MaterialButton(
-                minWidth: 200,
-                height: 40,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)),
-                color: Colors.orangeAccent,
-                onPressed: () {
-                  final List<String> checkResults = checkFields();
-                  if(checkResults.isNotEmpty)
-                    showDialog(
-                      context: context,
-                      builder: (final BuildContext context)
-                      =>AlertDialog(
-                        title: Text("Some fields aren't valid!"),
-                        content: Text(
-                          checkResults.join('\n')
-                        ),
-                        contentTextStyle: TextStyle(color: Colors.red),
-                      )
-                    );
-                  else
-                    showDialog(
-                      context: context,
-                      builder: (final BuildContext context)
-                      =>AlertDialog(
-                        title: Text("Result"),
-                        content: Text(
-                          "4125253"
-                        ),
-                        contentTextStyle: TextStyle(color: Colors.green),
-                      )
-                    );
-                },
-                child: const Text(
-                  "Submit",
-                  style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 200,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orangeAccent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                    ),
+                    onPressed: () {
+                      final List<String> checkResults = checkFields();
+                      if (checkResults.isNotEmpty) {
+                        showDialog(
+                            context: context,
+                            builder: (final BuildContext context) =>
+                                AlertDialog(
+                                  title:
+                                      const Text("Some fields aren't valid!"),
+                                  content: Text(checkResults.join('\n')),
+                                  contentTextStyle:
+                                      const TextStyle(color: Colors.red),
+                                ));
+                      } else {
+                        showDialog(
+                          context: context,
+                          builder: (final BuildContext context) =>
+                              const AlertDialog(
+                            title: Text("Result"),
+                            content: Text("4125253"),
+                            contentTextStyle: TextStyle(color: Colors.green),
+                          ),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      "Submit",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
+            ),
+            const SizedBox(
+              height: 15,
             ),
           ],
         ),
       ),
     );
   }
-  List<String> checkFields(){
+
+  List<String> checkFields() {
     List<String> messages = <String>[];
-    if(gender==null) messages.add("Gender field isn't selected!");
-    if(seniorCitizen==null) messages.add("Senior citizen field isn't selected!");
-    if(partner==null) messages.add("Partner field isn't selected!");
-    if(dependents==null) messages.add("Dependents field isn't selected!");
-    if(!RegExp(r"^\d+$").hasMatch(tenure.text)) messages.add("Tenure field value isn't valid!");
-    if(phoneService==null) messages.add("Phone service field isn't selected!");
-    if(multipleLines==null) messages.add("Multiple lines field isn't selected!");
-    if(internetService==null) messages.add("Internet Service field isn't selected!");
-    if(onlineSecurity==null) messages.add("Online security field isn't selected!");
-    if(onlineBackup==null) messages.add("Online backup field isn't selected!");
-    if(deviceProtection==null) messages.add("Device protection field isn't selected!");
-    if(techSupport==null) messages.add("Tech support field isn't selected!");
-    if(streamingTV==null) messages.add("Streaming TV field isn't selected!");
-    if(streamingMovies==null) messages.add("Streaming movies field isn't selected!");
-    if(contract==null) messages.add("Contract field isn't selected!");
-    if(paperlessBilling==null) messages.add("Paperless billing field isn't selected!");
-    if(paymentMethod==null) messages.add("Payment method field isn't selected!");
-    if(!RegExp(r"^\d+.?\d*$").hasMatch(monthlyCharges.text)) messages.add("Monthly charges field value isn't valid!");
-    if(!RegExp(r"^\d+.?\d*$").hasMatch(totalCharges.text)) messages.add("Total charges field value isn't valid!");
+    if (gender == null) messages.add("Gender field isn't selected!");
+    if (seniorCitizen == null)
+      messages.add("Senior citizen field isn't selected!");
+    if (partner == null) messages.add("Partner field isn't selected!");
+    if (dependents == null) messages.add("Dependents field isn't selected!");
+    if (!RegExp(r"^\d+$").hasMatch(tenure.text))
+      messages.add("Tenure field value isn't valid!");
+    if (phoneService == null)
+      messages.add("Phone service field isn't selected!");
+    if (multipleLines == null)
+      messages.add("Multiple lines field isn't selected!");
+    if (internetService == null)
+      messages.add("Internet Service field isn't selected!");
+    if (onlineSecurity == null)
+      messages.add("Online security field isn't selected!");
+    if (onlineBackup == null)
+      messages.add("Online backup field isn't selected!");
+    if (deviceProtection == null)
+      messages.add("Device protection field isn't selected!");
+    if (techSupport == null) messages.add("Tech support field isn't selected!");
+    if (streamingTV == null) messages.add("Streaming TV field isn't selected!");
+    if (streamingMovies == null)
+      messages.add("Streaming movies field isn't selected!");
+    if (contract == null) messages.add("Contract field isn't selected!");
+    if (paperlessBilling == null)
+      messages.add("Paperless billing field isn't selected!");
+    if (paymentMethod == null)
+      messages.add("Payment method field isn't selected!");
+    if (!RegExp(r"^\d+.?\d*$").hasMatch(monthlyCharges.text))
+      messages.add("Monthly charges field value isn't valid!");
+    if (!RegExp(r"^\d+.?\d*$").hasMatch(totalCharges.text))
+      messages.add("Total charges field value isn't valid!");
     return messages;
   }
 }
