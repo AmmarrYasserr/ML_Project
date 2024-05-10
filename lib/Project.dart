@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import "package:dio/dio.dart";
 class MLprojectv2 extends StatefulWidget {
   const MLprojectv2({super.key});
   @override
@@ -705,11 +705,71 @@ class _MLprojectv2State extends State<MLprojectv2> {
                         showDialog(
                           context: context,
                           builder: (final BuildContext context) =>
-                              const AlertDialog(
-                            title: Text("Result"),
-                            content: Text("4125253"),
-                            contentTextStyle: TextStyle(color: Colors.green),
-                          ),
+                              AlertDialog(
+                                contentPadding: EdgeInsets.zero,
+                              content: SizedBox(
+                                width: 300.0,
+                                height: 150.0,
+                                child: Center(
+                                child: FutureBuilder<Response<Map<String,dynamic>>>(
+                                future: Dio(BaseOptions(
+                                  baseUrl: "https://ml.hossamohsen.me/",
+                                  connectTimeout: const Duration(seconds:10),
+                                  receiveTimeout: const Duration(seconds:10),
+                                  sendTimeout: const Duration(seconds:10),
+                                )).post(
+                                  "predict",
+                                  data: <String, dynamic>{
+                                  "gender": gender,
+                                  "seniorCitizen": seniorCitizen== "Yes"?1:0,
+                                  "partner": partner,
+                                  "dependents": dependents,
+                                  "tenure": int.parse(tenure.text),
+                                  "phoneService": phoneService,
+                                  "multipleLines": multipleLines,
+                                  "internetService": internetService,
+                                  "onlineSecurity": onlineSecurity,
+                                  "onlineBackup": onlineBackup,
+                                  "deviceProtection": deviceProtection,
+                                  "techSupport": techSupport,
+                                  "streamingTV": streamingTV,
+                                  "streamingMovies": streamingMovies,
+                                  "contract": contract,
+                                  "paperlessBilling": paperlessBilling,
+                                  "paymentMethod": paymentMethod,
+                                  "monthlyCharges": double.parse(monthlyCharges.text),
+                                  "totalCharges": double.parse(totalCharges.text)
+                                }
+                                )..catchError((e){
+                                  print(e);
+                                }),
+                                builder: (final BuildContext context, final AsyncSnapshot snapshot) {
+                                  // print(snapshot.data);
+                                  if(snapshot.connectionState == ConnectionState.waiting)
+                                    return CircularProgressIndicator();
+                                  else if(snapshot.hasData)
+                                    return Text(
+                                      "The customer will ${snapshot.data.data["prediction"]==0?"not": ''} churn.",
+                                      style: TextStyle(fontSize: 18.0),
+                                      textAlign: TextAlign.center,
+                                    );
+                                  else
+                                    return Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Icon(Icons.signal_wifi_connected_no_internet_4),
+                                        Text(
+                                          "An error happened\nCheck your internet connection.",
+                                          textAlign: TextAlign.center,
+                                        )
+                                      ],
+                                    );
+                                 }
+                                ),
+                                ),
+                              )
+                            ),
                         );
                       }
                     },
