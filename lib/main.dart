@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ml_project/project.dart';
-import 'package:ml_project/website.dart';
+import 'package:ml_project/window_size.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class _MyAppState extends State<MyApp>{
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MLprojectv2(),
+      home: windowsize(),
     );
   }
 }
