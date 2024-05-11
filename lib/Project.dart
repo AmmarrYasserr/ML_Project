@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:flutter/material.dart';
 import "package:dio/dio.dart";
 class MLprojectv2 extends StatefulWidget {
@@ -745,16 +747,16 @@ class _MLprojectv2State extends State<MLprojectv2> {
                                 }),
                                 builder: (final BuildContext context, final AsyncSnapshot snapshot) {
                                   // print(snapshot.data);
-                                  if(snapshot.connectionState == ConnectionState.waiting)
-                                    return CircularProgressIndicator();
-                                  else if(snapshot.hasData)
+                                  if(snapshot.connectionState == ConnectionState.waiting) {
+                                    return const CircularProgressIndicator();
+                                  } else if(snapshot.hasData)
                                     return Text(
                                       "The customer will ${snapshot.data.data["prediction"]==0?"not": ''} churn.",
-                                      style: TextStyle(fontSize: 18.0),
+                                      style: const TextStyle(fontSize: 18.0),
                                       textAlign: TextAlign.center,
                                     );
                                   else
-                                    return Column(
+                                    return const Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.min,
                                       children: <Widget>[
@@ -797,37 +799,50 @@ class _MLprojectv2State extends State<MLprojectv2> {
   List<String> checkFields() {
     List<String> messages = <String>[];
     if (gender == null) messages.add("Gender field isn't selected!");
-    if (seniorCitizen == null)
+    if (seniorCitizen == null) {
       messages.add("Senior citizen field isn't selected!");
+    }
     if (partner == null) messages.add("Partner field isn't selected!");
     if (dependents == null) messages.add("Dependents field isn't selected!");
-    if (!RegExp(r"^\d+$").hasMatch(tenure.text))
+    if (!RegExp(r"^\d+$").hasMatch(tenure.text)) {
       messages.add("Tenure field value isn't valid!");
-    if (phoneService == null)
+    }
+    if (phoneService == null) {
       messages.add("Phone service field isn't selected!");
-    if (multipleLines == null)
+    }
+    if (multipleLines == null) {
       messages.add("Multiple lines field isn't selected!");
-    if (internetService == null)
+    }
+    if (internetService == null) {
       messages.add("Internet Service field isn't selected!");
-    if (onlineSecurity == null)
+    }
+    if (onlineSecurity == null) {
       messages.add("Online security field isn't selected!");
-    if (onlineBackup == null)
+    }
+    if (onlineBackup == null) {
       messages.add("Online backup field isn't selected!");
-    if (deviceProtection == null)
+    }
+    if (deviceProtection == null) {
       messages.add("Device protection field isn't selected!");
+    }
     if (techSupport == null) messages.add("Tech support field isn't selected!");
     if (streamingTV == null) messages.add("Streaming TV field isn't selected!");
-    if (streamingMovies == null)
+    if (streamingMovies == null) {
       messages.add("Streaming movies field isn't selected!");
+    }
     if (contract == null) messages.add("Contract field isn't selected!");
-    if (paperlessBilling == null)
+    if (paperlessBilling == null) {
       messages.add("Paperless billing field isn't selected!");
-    if (paymentMethod == null)
+    }
+    if (paymentMethod == null) {
       messages.add("Payment method field isn't selected!");
-    if (!RegExp(r"^\d+.?\d*$").hasMatch(monthlyCharges.text))
+    }
+    if (!RegExp(r"^\d+.?\d*$").hasMatch(monthlyCharges.text)) {
       messages.add("Monthly charges field value isn't valid!");
-    if (!RegExp(r"^\d+.?\d*$").hasMatch(totalCharges.text))
+    }
+    if (!RegExp(r"^\d+.?\d*$").hasMatch(totalCharges.text)) {
       messages.add("Total charges field value isn't valid!");
+    }
     return messages;
   }
 }
