@@ -1,7 +1,6 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
-import "package:dio/dio.dart";
 import 'package:ml_project/api.dart';
 
 class MobileView extends StatefulWidget {
@@ -15,7 +14,6 @@ class _MobileViewState extends State<MobileView> {
   String? seniorCitizen;
   String? partner;
   String? dependents;
-  TextEditingController tenure = TextEditingController();
   String? phoneService;
   String? multipleLines;
   String? internetService;
@@ -28,8 +26,9 @@ class _MobileViewState extends State<MobileView> {
   String? contract;
   String? paperlessBilling;
   String? paymentMethod;
-  TextEditingController monthlyCharges = TextEditingController();
-  TextEditingController totalCharges = TextEditingController();
+  final tenure = TextEditingController();
+  final monthlyCharges = TextEditingController();
+  final totalCharges = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
