@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ml_project/mobile_view.dart';
-import 'package:ml_project/web_view.dart';
+import 'package:ml_project/screens/predict/mobile_view.dart';
+import 'package:ml_project/screens/predict/web_view.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class PredictScreen extends StatelessWidget {
+  const PredictScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
