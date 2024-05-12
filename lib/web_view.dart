@@ -42,10 +42,11 @@ class _WebViewState extends State<WebView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: ListView(
-          children: [
-            Expanded(
-              child: GridView(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              GridView(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -54,6 +55,7 @@ class _WebViewState extends State<WebView> {
                     crossAxisSpacing: 20),
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Gender',
@@ -86,6 +88,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Senior Citizen',
@@ -118,6 +121,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Partner',
@@ -150,6 +154,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Dependents',
@@ -182,6 +187,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text("Tenure",
                           style: TextStyle(
@@ -216,6 +222,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Phone Service',
@@ -248,6 +255,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Multiple Lines',
@@ -290,6 +298,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Internet Service',
@@ -340,6 +349,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Online Security',
@@ -382,6 +392,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Online Backup',
@@ -424,6 +435,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Device Protection',
@@ -466,6 +478,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Tech Support',
@@ -508,6 +521,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Streaming TV',
@@ -550,6 +564,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Streaming Movies',
@@ -592,6 +607,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Contract',
@@ -634,6 +650,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Paperless Billing',
@@ -666,6 +683,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         'Payment Method',
@@ -718,6 +736,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text("Monthly Charges",
                           style: TextStyle(
@@ -753,6 +772,7 @@ class _WebViewState extends State<WebView> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text("Total Charges",
                           style: TextStyle(
@@ -784,116 +804,110 @@ class _WebViewState extends State<WebView> {
                   ),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orangeAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
+              SizedBox(
+                width: 200,
+                height: 35,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    onPressed: () {
-                      final List<String> checkResults = checkFields();
-                      if (checkResults.isNotEmpty) {
-                        showDialog(
-                            context: context,
-                            builder: (final BuildContext context) =>
-                                AlertDialog(
-                                  title:
-                                      const Text("Some fields aren't valid!"),
-                                  content: Text(checkResults.join('\n')),
-                                  contentTextStyle:
-                                      const TextStyle(color: Colors.red),
-                                ));
-                      } else {
-                        showDialog(
+                  ),
+                  onPressed: () {
+                    final List<String> checkResults = checkFields();
+                    if (checkResults.isNotEmpty) {
+                      showDialog(
                           context: context,
                           builder: (final BuildContext context) => AlertDialog(
-                            contentPadding: EdgeInsets.zero,
-                            content: SizedBox(
-                              width: 300.0,
-                              height: 150.0,
-                              child: Center(
-                                child: FutureBuilder<int>(
-                                    future: ApiService.predict({
-                                      "gender": gender,
-                                      "seniorCitizen":
-                                          seniorCitizen == "Yes" ? 1 : 0,
-                                      "partner": partner,
-                                      "dependents": dependents,
-                                      "tenure": int.parse(tenure.text),
-                                      "phoneService": phoneService,
-                                      "multipleLines": multipleLines,
-                                      "internetService": internetService,
-                                      "onlineSecurity": onlineSecurity,
-                                      "onlineBackup": onlineBackup,
-                                      "deviceProtection": deviceProtection,
-                                      "techSupport": techSupport,
-                                      "streamingTV": streamingTV,
-                                      "streamingMovies": streamingMovies,
-                                      "contract": contract,
-                                      "paperlessBilling": paperlessBilling,
-                                      "paymentMethod": paymentMethod,
-                                      "monthlyCharges":
-                                          double.parse(monthlyCharges.text),
-                                      "totalCharges":
-                                          double.parse(totalCharges.text)
-                                    })
-                                      ..catchError((e) {
-                                        print(e);
-                                        return -1;
-                                      }),
-                                    builder: (ontext, snapshot) {
-                                      // print(snapshot.data);
-                                      if (snapshot.connectionState ==
-                                          ConnectionState.waiting) {
-                                        return const CircularProgressIndicator();
-                                      } else if (snapshot.hasData)
-                                        return Text(
-                                          "The customer will ${snapshot.data == 0 ? "not" : ''} churn.",
-                                          style:
-                                              const TextStyle(fontSize: 18.0),
-                                          textAlign: TextAlign.center,
-                                        );
-                                      else
-                                        return const Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            Icon(Icons
-                                                .signal_wifi_connected_no_internet_4),
-                                            Text(
-                                              "An error happened\nCheck your internet connection.",
-                                              textAlign: TextAlign.center,
-                                            )
-                                          ],
-                                        );
+                                title: const Text("Some fields aren't valid!"),
+                                content: Text(checkResults.join('\n')),
+                                contentTextStyle:
+                                    const TextStyle(color: Colors.red),
+                              ));
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (final BuildContext context) => AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          content: SizedBox(
+                            width: 300.0,
+                            height: 150.0,
+                            child: Center(
+                              child: FutureBuilder<int>(
+                                  future: ApiService.predict({
+                                    "gender": gender,
+                                    "seniorCitizen":
+                                        seniorCitizen == "Yes" ? 1 : 0,
+                                    "partner": partner,
+                                    "dependents": dependents,
+                                    "tenure": int.parse(tenure.text),
+                                    "phoneService": phoneService,
+                                    "multipleLines": multipleLines,
+                                    "internetService": internetService,
+                                    "onlineSecurity": onlineSecurity,
+                                    "onlineBackup": onlineBackup,
+                                    "deviceProtection": deviceProtection,
+                                    "techSupport": techSupport,
+                                    "streamingTV": streamingTV,
+                                    "streamingMovies": streamingMovies,
+                                    "contract": contract,
+                                    "paperlessBilling": paperlessBilling,
+                                    "paymentMethod": paymentMethod,
+                                    "monthlyCharges":
+                                        double.parse(monthlyCharges.text),
+                                    "totalCharges":
+                                        double.parse(totalCharges.text)
+                                  })
+                                    ..catchError((e) {
+                                      print(e);
+                                      return -1;
                                     }),
-                              ),
+                                  builder: (ontext, snapshot) {
+                                    // print(snapshot.data);
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const CircularProgressIndicator();
+                                    } else if (snapshot.hasData)
+                                      return Text(
+                                        "The customer will ${snapshot.data == 0 ? "not" : ''} churn.",
+                                        style: const TextStyle(fontSize: 18.0),
+                                        textAlign: TextAlign.center,
+                                      );
+                                    else
+                                      return const Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          Icon(Icons
+                                              .signal_wifi_connected_no_internet_4),
+                                          Text(
+                                            "An error happened\nCheck your internet connection.",
+                                            textAlign: TextAlign.center,
+                                          )
+                                        ],
+                                      );
+                                  }),
                             ),
                           ),
-                        );
-                      }
-                    },
-                    child: const Text(
-                      "Submit",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    "Submit",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              const SizedBox(height: 30),
+            ],
+          ),
         ),
       ),
     );
