@@ -240,6 +240,9 @@ class _WebViewState extends State<WebView> {
                         onChanged: (val) {
                           setState(() {
                             phoneService = val;
+                            if(phoneService == 'No'){
+                              multipleLines = 'No phone service';
+                            }
                           });
                         }),
                     const SizedBox(

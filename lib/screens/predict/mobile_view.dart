@@ -198,6 +198,9 @@ class _MobileViewState extends State<MobileView> {
               onChanged: (val) {
                 setState(() {
                   phoneService = val;
+                  if (phoneService == 'No') {
+                    multipleLines = 'No phone service';
+                  }
                 });
               }),
           const SizedBox(
