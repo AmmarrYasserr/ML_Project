@@ -37,6 +37,7 @@ dependencies:
   dio: ^5.4.3+1
   hive: ^2.2.3
   uuid: ^4.4.0
+  bottom_navbar_with_indicator: ^0.0.8
 
 dev_dependencies:
   flutter_test:

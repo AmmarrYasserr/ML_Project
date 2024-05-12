@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ml_project/screens/history/history_screen.dart';
 import 'package:ml_project/screens/predict/predict_screen.dart';
+import 'package:bottom_navbar_with_indicator/bottom_navbar_with_indicator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,14 +28,18 @@ class _MyAppState extends State<MyApp> {
           centerTitle: true,
           backgroundColor: Colors.orangeAccent,
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.assessment),
+        bottomNavigationBar: CustomLineIndicatorBottomNavbar(
+          enableLineIndicator: true,
+          indicatorType: IndicatorType.top,
+          lineIndicatorWidth: 3,
+          selectedColor: Colors.orangeAccent[400],
+          customBottomBarItems: [
+            CustomBottomBarItems(
+              icon: Icons.assessment,
               label: "Predict",
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.history),
+            CustomBottomBarItems(
+              icon: Icons.history,
               label: "History",
             ),
           ],

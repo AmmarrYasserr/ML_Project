@@ -1,7 +1,5 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:ml_project/api.dart';
 
@@ -36,7 +34,7 @@ class _WebViewState extends State<WebView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,6 +48,9 @@ class _WebViewState extends State<WebView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Text(
                       'Gender',
                       style:
@@ -83,6 +84,9 @@ class _WebViewState extends State<WebView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Text(
                       'Senior Citizen',
                       style:
@@ -240,7 +244,7 @@ class _WebViewState extends State<WebView> {
                         onChanged: (val) {
                           setState(() {
                             phoneService = val;
-                            if(phoneService == 'No'){
+                            if (phoneService == 'No') {
                               multipleLines = 'No phone service';
                             }
                           });

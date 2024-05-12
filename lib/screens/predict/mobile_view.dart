@@ -1,7 +1,5 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:ml_project/api.dart';
 
@@ -36,9 +34,15 @@ class _MobileViewState extends State<MobileView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.only(
+        left: 20,
+        right: 20,
+      ),
       child: ListView(
         children: [
+          const SizedBox(
+            height: 10,
+          ),
           const Text(
             'Gender',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
