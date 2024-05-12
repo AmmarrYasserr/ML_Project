@@ -1,15 +1,15 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
-import "package:dio/dio.dart";
+import 'package:ml_project/api.dart';
 
-class MLwebsite extends StatefulWidget {
-  const MLwebsite({super.key});
+class WebView extends StatefulWidget {
+  const WebView({super.key});
   @override
-  State<MLwebsite> createState() => _MLwebsiteState();
+  State<WebView> createState() => _WebViewState();
 }
 
-class _MLwebsiteState extends State<MLwebsite> {
+class _WebViewState extends State<WebView> {
   String? gender;
   String? seniorCitizen;
   String? partner;
@@ -819,16 +819,8 @@ class _MLwebsiteState extends State<MLwebsite> {
                               width: 300.0,
                               height: 150.0,
                               child: Center(
-                                child: FutureBuilder<
-                                        Response<Map<String, dynamic>>>(
-                                    future: Dio(BaseOptions(
-                                      baseUrl: "https://ml.hossamohsen.me/",
-                                      connectTimeout:
-                                          const Duration(seconds: 10),
-                                      receiveTimeout:
-                                          const Duration(seconds: 10),
-                                      sendTimeout: const Duration(seconds: 10),
-                                    )).post("predict", data: <String, dynamic>{
+                                child: FutureBuilder<int>(
+                                    future: ApiService.predict({
                                       "gender": gender,
                                       "seniorCitizen":
                                           seniorCitizen == "Yes" ? 1 : 0,
@@ -854,16 +846,16 @@ class _MLwebsiteState extends State<MLwebsite> {
                                     })
                                       ..catchError((e) {
                                         print(e);
+                                        return -1;
                                       }),
-                                    builder: (final BuildContext context,
-                                        final AsyncSnapshot snapshot) {
+                                    builder: (ontext, snapshot) {
                                       // print(snapshot.data);
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {
                                         return const CircularProgressIndicator();
                                       } else if (snapshot.hasData)
                                         return Text(
-                                          "The customer will ${snapshot.data.data["prediction"] == 0 ? "not" : ''} churn.",
+                                          "The customer will ${snapshot.data == 0 ? "not" : ''} churn.",
                                           style:
                                               const TextStyle(fontSize: 18.0),
                                           textAlign: TextAlign.center,

@@ -2,13 +2,15 @@
 
 import 'package:flutter/material.dart';
 import "package:dio/dio.dart";
-class MLprojectv2 extends StatefulWidget {
-  const MLprojectv2({super.key});
+import 'package:ml_project/api.dart';
+
+class MobileView extends StatefulWidget {
+  const MobileView({super.key});
   @override
-  State<MLprojectv2> createState() => _MLprojectv2State();
+  State<MobileView> createState() => _MobileViewState();
 }
 
-class _MLprojectv2State extends State<MLprojectv2> {
+class _MobileViewState extends State<MobileView> {
   String? gender;
   String? seniorCitizen;
   String? partner;
@@ -706,72 +708,70 @@ class _MLprojectv2State extends State<MLprojectv2> {
                       } else {
                         showDialog(
                           context: context,
-                          builder: (final BuildContext context) =>
-                              AlertDialog(
-                                contentPadding: EdgeInsets.zero,
+                          builder: (final BuildContext context) => AlertDialog(
+                              contentPadding: EdgeInsets.zero,
                               content: SizedBox(
                                 width: 300.0,
                                 height: 150.0,
                                 child: Center(
-                                child: FutureBuilder<Response<Map<String,dynamic>>>(
-                                future: Dio(BaseOptions(
-                                  baseUrl: "https://ml.hossamohsen.me/",
-                                  connectTimeout: const Duration(seconds:10),
-                                  receiveTimeout: const Duration(seconds:10),
-                                  sendTimeout: const Duration(seconds:10),
-                                )).post(
-                                  "predict",
-                                  data: <String, dynamic>{
-                                  "gender": gender,
-                                  "seniorCitizen": seniorCitizen== "Yes"?1:0,
-                                  "partner": partner,
-                                  "dependents": dependents,
-                                  "tenure": int.parse(tenure.text),
-                                  "phoneService": phoneService,
-                                  "multipleLines": multipleLines,
-                                  "internetService": internetService,
-                                  "onlineSecurity": onlineSecurity,
-                                  "onlineBackup": onlineBackup,
-                                  "deviceProtection": deviceProtection,
-                                  "techSupport": techSupport,
-                                  "streamingTV": streamingTV,
-                                  "streamingMovies": streamingMovies,
-                                  "contract": contract,
-                                  "paperlessBilling": paperlessBilling,
-                                  "paymentMethod": paymentMethod,
-                                  "monthlyCharges": double.parse(monthlyCharges.text),
-                                  "totalCharges": double.parse(totalCharges.text)
-                                }
-                                )..catchError((e){
-                                  print(e);
-                                }),
-                                builder: (final BuildContext context, final AsyncSnapshot snapshot) {
-                                  // print(snapshot.data);
-                                  if(snapshot.connectionState == ConnectionState.waiting) {
-                                    return const CircularProgressIndicator();
-                                  } else if(snapshot.hasData)
-                                    return Text(
-                                      "The customer will ${snapshot.data.data["prediction"]==0?"not": ''} churn.",
-                                      style: const TextStyle(fontSize: 18.0),
-                                      textAlign: TextAlign.center,
-                                    );
-                                  else
-                                    return const Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        Icon(Icons.signal_wifi_connected_no_internet_4),
-                                        Text(
-                                          "An error happened\nCheck your internet connection.",
-                                          textAlign: TextAlign.center,
-                                        )
-                                      ],
-                                    );
-                                 }
+                                  child: FutureBuilder<int>(
+                                      future: ApiService.predict({
+                                        "gender": gender,
+                                        "seniorCitizen":
+                                            seniorCitizen == "Yes" ? 1 : 0,
+                                        "partner": partner,
+                                        "dependents": dependents,
+                                        "tenure": int.parse(tenure.text),
+                                        "phoneService": phoneService,
+                                        "multipleLines": multipleLines,
+                                        "internetService": internetService,
+                                        "onlineSecurity": onlineSecurity,
+                                        "onlineBackup": onlineBackup,
+                                        "deviceProtection": deviceProtection,
+                                        "techSupport": techSupport,
+                                        "streamingTV": streamingTV,
+                                        "streamingMovies": streamingMovies,
+                                        "contract": contract,
+                                        "paperlessBilling": paperlessBilling,
+                                        "paymentMethod": paymentMethod,
+                                        "monthlyCharges":
+                                            double.parse(monthlyCharges.text),
+                                        "totalCharges":
+                                            double.parse(totalCharges.text)
+                                      })
+                                        ..catchError((e) {
+                                          print(e);
+                                          return -1;
+                                        }),
+                                      builder: (context, snapshot) {
+                                        // print(snapshot.data);
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return const CircularProgressIndicator();
+                                        } else if (snapshot.hasData)
+                                          return Text(
+                                            "The customer will ${snapshot.data == 0 ? "not" : ''} churn.",
+                                            style:
+                                                const TextStyle(fontSize: 18.0),
+                                            textAlign: TextAlign.center,
+                                          );
+                                        else
+                                          return const Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: <Widget>[
+                                              Icon(Icons
+                                                  .signal_wifi_connected_no_internet_4),
+                                              Text(
+                                                "An error happened\nCheck your internet connection.",
+                                                textAlign: TextAlign.center,
+                                              )
+                                            ],
+                                          );
+                                      }),
                                 ),
-                                ),
-                              )
-                            ),
+                              )),
                         );
                       }
                     },
