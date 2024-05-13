@@ -18,7 +18,7 @@ class HistoryManager {
   static Future<void> deleteHistory(String id) async {
     final box = await Hive.openBox<HistoryItem>("history");
     final Map<dynamic, HistoryItem> map = box.toMap();
-    String key = map.keys.firstWhere((key) => map[key]!.id == id);
+    final key = map.keys.firstWhere((key) => map[key]!.id == id);
     return box.delete(key);
   }
 }

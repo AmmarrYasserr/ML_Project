@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:ml_project/models/history_item.dart';
+import 'package:ml_project/models/prediction_request.dart';
 import 'package:ml_project/screens/history/history_screen.dart';
 import 'package:ml_project/screens/predict/predict_screen.dart';
 import 'package:bottom_navbar_with_indicator/bottom_navbar_with_indicator.dart';
 
 void main() {
+  Hive.registerAdapter(HistoryItemAdapter());
+  Hive.registerAdapter(PredictionRequestAdapter());
   runApp(const MyApp());
 }
 

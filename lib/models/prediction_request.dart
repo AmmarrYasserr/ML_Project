@@ -1,48 +1,46 @@
-//  future: ApiService.predict({
-//                                     "gender": gender,
-//                                     "seniorCitizen":
-//                                         seniorCitizen == "Yes" ? 1 : 0,
-//                                     "partner": partner,
-//                                     "dependents": dependents,
-//                                     "tenure": int.parse(tenure.text),
-//                                     "phoneService": phoneService,
-//                                     "multipleLines": multipleLines,
-//                                     "internetService": internetService,
-//                                     "onlineSecurity": onlineSecurity,
-//                                     "onlineBackup": onlineBackup,
-//                                     "deviceProtection": deviceProtection,
-//                                     "techSupport": techSupport,
-//                                     "streamingTV": streamingTV,
-//                                     "streamingMovies": streamingMovies,
-//                                     "contract": contract,
-//                                     "paperlessBilling": paperlessBilling,
-//                                     "paymentMethod": paymentMethod,
-//                                     "monthlyCharges":
-//                                         double.parse(monthlyCharges.text),
-//                                     "totalCharges":
-//                                         double.parse(totalCharges.text)
-//                                   })
+import 'package:hive/hive.dart';
 
+part 'prediction_request.g.dart';
+
+@HiveType(typeId: 1)
 class PredictionRequest {
-  //convert all the above to fields
+  @HiveField(0)
   final String gender;
+  @HiveField(1)
   final int seniorCitizen;
+  @HiveField(2)
   final String partner;
+  @HiveField(3)
   final String dependents;
+  @HiveField(4)
   final int tenure;
+  @HiveField(5)
   final String phoneService;
+  @HiveField(6)
   final String multipleLines;
+  @HiveField(7)
   final String internetService;
+  @HiveField(8)
   final String onlineSecurity;
+  @HiveField(9)
   final String onlineBackup;
+  @HiveField(10)
   final String deviceProtection;
+  @HiveField(11)
   final String techSupport;
+  @HiveField(12)
   final String streamingTV;
+  @HiveField(13)
   final String streamingMovies;
+  @HiveField(14)
   final String contract;
+  @HiveField(15)
   final String paperlessBilling;
+  @HiveField(16)
   final String paymentMethod;
+  @HiveField(17)
   final double monthlyCharges;
+  @HiveField(18)
   final double totalCharges;
 
   PredictionRequest({

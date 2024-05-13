@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:ml_project/api.dart';
+import 'package:ml_project/history_box.dart';
+import 'package:ml_project/models/history_item.dart';
+import 'package:ml_project/models/prediction_request.dart';
 
 class MobileView extends StatefulWidget {
   const MobileView({super.key});
@@ -709,6 +712,27 @@ class _MobileViewState extends State<MobileView> {
                         error = "Please check missing fields.";
                       });
                     } else {
+                      final request = PredictionRequest.fromJson({
+                        "gender": gender,
+                        "seniorCitizen": seniorCitizen == "Yes" ? 1 : 0,
+                        "partner": partner,
+                        "dependents": dependents,
+                        "tenure": int.parse(tenure.text),
+                        "phoneService": phoneService,
+                        "multipleLines": multipleLines,
+                        "internetService": internetService,
+                        "onlineSecurity": onlineSecurity,
+                        "onlineBackup": onlineBackup,
+                        "deviceProtection": deviceProtection,
+                        "techSupport": techSupport,
+                        "streamingTV": streamingTV,
+                        "streamingMovies": streamingMovies,
+                        "contract": contract,
+                        "paperlessBilling": paperlessBilling,
+                        "paymentMethod": paymentMethod,
+                        "monthlyCharges": double.parse(monthlyCharges.text),
+                        "totalCharges": double.parse(totalCharges.text)
+                      });
                       showDialog(
                         context: context,
                         builder: (final BuildContext context) => AlertDialog(
@@ -718,30 +742,7 @@ class _MobileViewState extends State<MobileView> {
                               height: 150.0,
                               child: Center(
                                 child: FutureBuilder<int>(
-                                    future: ApiService.predict({
-                                      "gender": gender,
-                                      "seniorCitizen":
-                                          seniorCitizen == "Yes" ? 1 : 0,
-                                      "partner": partner,
-                                      "dependents": dependents,
-                                      "tenure": int.parse(tenure.text),
-                                      "phoneService": phoneService,
-                                      "multipleLines": multipleLines,
-                                      "internetService": internetService,
-                                      "onlineSecurity": onlineSecurity,
-                                      "onlineBackup": onlineBackup,
-                                      "deviceProtection": deviceProtection,
-                                      "techSupport": techSupport,
-                                      "streamingTV": streamingTV,
-                                      "streamingMovies": streamingMovies,
-                                      "contract": contract,
-                                      "paperlessBilling": paperlessBilling,
-                                      "paymentMethod": paymentMethod,
-                                      "monthlyCharges":
-                                          double.parse(monthlyCharges.text),
-                                      "totalCharges":
-                                          double.parse(totalCharges.text)
-                                    })
+                                    future: ApiService.predict(request)
                                       ..catchError((e) {
                                         print(e);
                                         return -1;
@@ -751,14 +752,18 @@ class _MobileViewState extends State<MobileView> {
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {
                                         return const CircularProgressIndicator();
-                                      } else if (snapshot.hasData)
+                                      } else if (snapshot.hasData) {
+                                        final historyItem = HistoryItem.create(
+                                            request: request,
+                                            prediction: snapshot.data!);
+                                        HistoryManager.addHistory(historyItem);
                                         return Text(
                                           "The customer will ${snapshot.data == 0 ? "not" : ''} churn.",
                                           style:
                                               const TextStyle(fontSize: 18.0),
                                           textAlign: TextAlign.center,
                                         );
-                                      else
+                                      } else {
                                         return const Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -772,6 +777,7 @@ class _MobileViewState extends State<MobileView> {
                                             )
                                           ],
                                         );
+                                      }
                                     }),
                               ),
                             )),
